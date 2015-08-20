@@ -1,0 +1,22 @@
+{
+  "name": "angular-bestpractises-course",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brechtbilliet/angular-bestpractises-course.git"
+  },
+  "author": "Brecht Billiet <billietbrecht@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brechtbilliet/angular-bestpractises-course/issues"
+  },
+  "homepage": "https://github.com/brechtbilliet/angular-bestpractises-course#readme",
+  "devDependencies": {
+    "karma": "^0.13.9"
+  }
+}

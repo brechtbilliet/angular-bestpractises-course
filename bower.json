@@ -1,0 +1,24 @@
+{
+  "name": "angular-bestpractises-course",
+  "version": "0.0.0",
+  "homepage": "https://github.com/brechtbilliet/angular-bestpractises-course",
+  "authors": [
+    "Brecht Billiet <billietbrecht@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.4",
+    "angular-route": "~1.4.4",
+    "angular-mocks": "~1.4.4",
+    "bootstrap": "~3.3.5",
+    "toastr": "~2.1.2",
+    "lodash": "~3.10.1"
+  }
+}
