@@ -1,4 +1,12 @@
 (function(){
     'use strict';
-    angular.module('app.project', []);
+    var mod = angular.module('app.project', ['ngRoute']);
+    mod.config(routeConfig);
+
+    routeConfig.$inject = ['$routeProvider'];
+    function routeConfig($routeProvider){
+    	$routeProvider.when('/projects', {
+    		template: '<page-projects></page-projects>'
+    	});
+    }
 }());
