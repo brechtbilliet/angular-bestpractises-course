@@ -37,7 +37,7 @@
 	});
 
 	gulp.task('compile-javascript', ['html'], function() {
-		return gulp.src(jsDependencies.concat(['app/**/*.js', 'dev/scripts.js']))
+		return gulp.src(jsDependencies.concat(['app/modules/*/index.js', 'app/**/*.js', 'dev/scripts.js']))
 			.pipe(sourcemaps.init())
 			.pipe(concat('scripts.js'))
 			.pipe(sourcemaps.write('./'))
@@ -45,7 +45,7 @@
 	});
 
 	gulp.task('compile-css', function() {
-		return gulp.src(cssDependencies.concat(['style/screen.css']))
+		return gulp.src(cssDependencies.concat(['app/style/screen.css']))
 			.pipe(sourcemaps.init())
 			.pipe(concat('screen.css'))
 			.pipe(sourcemaps.write('./'))
