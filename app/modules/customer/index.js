@@ -6,7 +6,7 @@
     routeConfig.$inject = ['$routeProvider'];
     function routeConfig($routeProvider){
     	$routeProvider.when('/customers', {
-    		template: '<page-customers></page-customers>'
+    		template: '<page-customer></page-customer>'
     	});
     }
 }());
