@@ -21,10 +21,12 @@
 			'bower_components/angular-route/angular-route.js',
 			'bower_components/bootstrap/dist/js/bootstrap.js',
 			'bower_components/lodash/lodash.js',
+			'bower_components/toastr/toastr.js'
 		],
 		cssDependencies = [
 			'bower_components/bootstrap/dist/css/bootstrap.css',
-			'bower_components/fontawesome/css/font-awesome.css'
+			'bower_components/fontawesome/css/font-awesome.css',
+			'bower_components/toastr/toastr.css'
 		];
 
 	gulp.task('html', function() {

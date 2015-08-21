@@ -1,1 +1,24 @@
 <h1><i class="fa fa-user"></i>&nbsp;Customers</h1>
+<a href="#/customers/add" class="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Add</a>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Company name</th>
+			<th>Description</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="customer in pageVm.model.gridData">
+			<td>{{::customer.companyName}}</td>
+			<td>{{::customer.description}}</td>
+			<td><a href="#/customers/{{::customer.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Detail</a></td>
+		</tr>
+		<tr ng-if="pageVm.model.gridData.length === 0">
+			<td colspan="3">No data found</td>
+		</tr>
+		<tr ng-if="pageVm.model.gridData === null">
+			<td colspan="3">Loading</td>
+		</tr>
+	</tbody>
+</table>
