@@ -48,8 +48,11 @@
 			var returnVal = [];
 			for(var i = 0; i < 10; i++){
 				returnVal.push({
-					companyName: 'dummy companyName ' + i,
-					description: 'dummy description',
+					name: 'name' + i,
+					city: 'city' + i,
+					zipCode: 'zipCode' + i,
+					street: 'street' + i,
+					number: 'number' + i,
 					id: i
 				});
 			}
