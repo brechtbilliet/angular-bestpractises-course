@@ -8,7 +8,7 @@
 	function ProjectPageAddModel(projectService, customerService) {
 		var self = this;
 		self.workingCopy = {
-			projectName: '',
+			name: '',
 			description: '',
 			customer: null
 		};
@@ -26,7 +26,7 @@
 
 		function reset() {
 			self.workingCopy = {
-				projectName: '',
+				name: '',
 				description: '',
 				customer: null
 			};

@@ -48,7 +48,7 @@
 			var returnVal = [];
 			for(var i = 0; i < 10; i++){
 				returnVal.push({
-					projectName: 'dummy projectname ' + i,
+					name: 'dummy projectname ' + i,
 					description: 'dummy description',
 					customer: {
 						id: i,
