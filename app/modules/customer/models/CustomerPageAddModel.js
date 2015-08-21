@@ -7,8 +7,11 @@
 	function CustomerPageAddModel(customerService) {
 		var self = this;
 		self.workingCopy = {
-			companyName: '',
-			description: ''
+			name: '',
+			city: '',
+			zipCode: '',
+			street: '',
+			number: ''
 		};
 	}
 }());
