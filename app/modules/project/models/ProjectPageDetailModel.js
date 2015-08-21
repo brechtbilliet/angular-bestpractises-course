@@ -21,7 +21,7 @@
 		}
 
 		function save(){
-			return projectService.update(self.workingCopyChanged, self.workingCopy.id);
+			return projectService.update(self.workingCopy, self.workingCopy.id);
 		}
 
 		function workingCopyChanged(){
