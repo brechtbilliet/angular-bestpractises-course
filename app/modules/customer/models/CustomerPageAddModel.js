@@ -8,8 +8,11 @@
 	function CustomerPageAddModel(customerService) {
 		var self = this;
 		self.workingCopy = {
-			companyName: '',
-			description: ''
+			name: '',
+			city: '',
+			zipCode: '',
+			street: '',
+			number: ''
 		};
 		self.reset = reset;
 		self.cancel = cancel;
@@ -25,8 +28,11 @@
 
 		function reset() {
 			self.workingCopy = {
-				companyName: '',
-				description: ''
+				name: '',
+				city: '',
+				zipCode: '',
+				street: '',
+				number: ''
 			};
 		}
 	}
