@@ -23,7 +23,7 @@
 		}
 
 		function save() {
-			return customerService.add(self.workingCopyChanged);
+			return customerService.add(self.workingCopy);
 		}
 
 		function reset() {

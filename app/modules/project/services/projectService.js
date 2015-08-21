@@ -3,8 +3,8 @@
 	
 	angular.module('app.project').factory('projectService', projectService);
 
-	projectService.$inject = ['$q', '$timeout'];
-	function projectService($q, $timeout){
+	projectService.$inject = ['$http', 'CONFIG'];
+	function projectService($http, CONFIG){
 		return {
 			getAll: getAll,
 			getById: getById,
@@ -14,59 +14,39 @@
 		};
 
 		function add(project){
-			var deferred = $q.defer();
-			$timeout(function(){
-				deferred.resolve();
-			},1000);
-			return deferred.promise;
+			return $http({
+				method: 'POST',
+				url: CONFIG.restUrl + 'projects',
+				data: project
+			});
 		}
 		function update(project, id){
-			var deferred = $q.defer();
-			$timeout(function(){
-				deferred.resolve();
-			},1000);
-			return deferred.promise;
+			return $http({
+				method: 'PUT',
+				url: CONFIG.restUrl + 'projects/' + id,
+				data: project
+			});
 		}
 
 		function remove(id){
-			var deferred = $q.defer();
-			$timeout(function(){
-				deferred.resolve();
-			},1000);
-			return deferred.promise;
+			return $http({
+				method: 'DELETE',
+				url: CONFIG.restUrl + 'projects/' + id
+			});
 		}
 
 		function getAll(){
-			var deferred = $q.defer();
-			$timeout(function(){
-				deferred.resolve({data: getDummyProjects()});
-			},1000);
-			return deferred.promise;
+			return $http({
+				method: 'GET',
+				url: CONFIG.restUrl + 'projects'
+			});
 		}
 
-		function getDummyProjects(){
-			var returnVal = [];
-			for(var i = 0; i < 10; i++){
-				returnVal.push({
-					name: 'dummy projectname ' + i,
-					description: 'dummy description',
-					customer: {
-						id: i,
-						companyName: 'Dummy companyName',
-						description: 'dummy description'
-					},
-					id: i
-				});
-			}
-			return returnVal;
-		}
-
-		function getById(){
-			var deferred = $q.defer();
-			$timeout(function(){
-				deferred.resolve({data: getDummyProjects()[0]});
-			},1000);
-			return deferred.promise;
+		function getById(id){
+			return $http({
+				method: 'GET',
+				url: CONFIG.restUrl + 'projects/' + id
+			});
 		}
 	}
 }());

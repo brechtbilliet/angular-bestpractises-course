@@ -30,7 +30,7 @@
 
 		function remove(id){
 			return $http({
-				method: 'REMOVE',
+				method: 'DELETE',
 				url: CONFIG.restUrl + 'customers/' + id
 			});
 		}
