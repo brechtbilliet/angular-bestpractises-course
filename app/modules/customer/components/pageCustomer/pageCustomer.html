@@ -8,6 +8,7 @@
 			<th>Zipcode</th>
 			<th>Street</th>
 			<th>Number</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,10 +21,10 @@
 			<td><a href="#/customers/{{::customer.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Detail</a></td>
 		</tr>
 		<tr ng-if="pageVm.model.gridData.length === 0">
-			<td colspan="3">No data found</td>
+			<td colspan="6">No data found</td>
 		</tr>
 		<tr ng-if="pageVm.model.gridData === null">
-			<td colspan="3">Loading</td>
+			<td colspan="6">Loading</td>
 		</tr>
 	</tbody>
 </table>
