@@ -1,0 +1,28 @@
+<h1><i class="fa fa-user"></i>&nbsp;Add Project</h1>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Project name</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model="pageVm.model.workingCopy.projectName">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Description</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" ng-model="pageVm.model.workingCopy.description">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Customer</label>
+    <div class="col-sm-8">
+      <select class="form-control" ng-options="c.id as c.companyName for c in pageVm.model.customers" ng-model="pageVm.model.workingCopy.customer"></select>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <button class="btn btn-default" ng-click="pageVm.cancel()"><i class="fa fa-undo"></i>&nbsp;Cancel</button>
+      <button class="btn btn-primary" ng-click="pageVm.save()" ng-disabled="pageVm.model.workingCopy.customer === null && pageVm.model.workingCopy.projectName === '' && pageVm.model.workingCopy.description === ''"><i class="fa fa-save"></i>&nbsp;Save</button>
+    </div>
+  </div>
+</form>

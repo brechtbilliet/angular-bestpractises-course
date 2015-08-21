@@ -1,1 +1,29 @@
-<h1><i class="fa fa-list"></i>&nbsp;Projects</h1>
+<h1><i class="fa fa-user"></i>&nbsp;projects</h1>
+<a href="#/projects/add" class="btn btn-primary"><i class="fa fa-plus-circle"></i>&nbsp;Add</a>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Project name</th>
+			<th>Description</th>
+			<th>Customer</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="project in pageVm.model.gridData">
+			<td>{{::project.projectName}}</td>
+			<td>{{::project.description}}</td>
+			<td>{{::project.customer.companyName}}</td>
+			<td>
+				<a href="#/projects/{{::project.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Detail</a>
+				<button class="btn btn-danger" ng-click="pageVm.remove(project)"><i class="fa fa-trash-o"></i>&nbsp;Remove</button>
+			</td>
+		</tr>
+		<tr ng-if="pageVm.model.gridData.length === 0">
+			<td colspan="4">No data found</td>
+		</tr>
+		<tr ng-if="pageVm.model.gridData === null">
+			<td colspan="4">Loading</td>
+		</tr>
+	</tbody>
+</table>

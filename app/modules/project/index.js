@@ -5,8 +5,15 @@
 
     routeConfig.$inject = ['$routeProvider'];
     function routeConfig($routeProvider){
-    	$routeProvider.when('/projects', {
-    		template: '<page-project></page-project>'
-    	});
+    	$routeProvider
+    		.when('/projects', {
+	    		template: '<page-project></page-project>'
+	    	})
+	    	.when('/projects/add', {
+	    		template: '<page-project-add></page-project-add>'
+	    	})
+	    	.when('/projects/:id', {
+	    		template: '<page-project-detail></page-project-detail>'
+	    	});
     }
 }());
