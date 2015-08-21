@@ -21,7 +21,7 @@
 		}
 
 		function save(){
-			return customerService.update(self.workingCopyChanged, self.workingCopy.id);
+			return customerService.update(self.workingCopy, self.workingCopy.id);
 		}
 
 		function workingCopyChanged(){

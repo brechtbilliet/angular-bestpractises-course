@@ -21,7 +21,7 @@
 		}
 
 		function save() {
-			return projectService.add(self.workingCopyChanged);
+			return projectService.add(self.workingCopy);
 		}
 
 		function reset() {
