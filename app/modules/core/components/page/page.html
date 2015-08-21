@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="pageVm.session.isAuthenticated">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -15,6 +15,12 @@
 					<a href="#{{::menuItem.url}}">{{::menuItem.label}}</a>
 				</li>
 			</ul>
+			<div class="navbar-form navbar-left">
+				<button class="navbar-button btn btn-warning" ng-click="pageVm.logout()">logout</button>
+			</div>
+			<div class="navbar-text">
+				Welcome {{pageVm.session.firstName}} {{pageVm.session.lastName}}
+			</div>
 		</div>
 	</div>
 </nav>

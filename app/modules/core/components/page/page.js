@@ -4,10 +4,12 @@
 
     function pageDirective(){
     	
-        PageDirectiveController.$inject = ['menuItemService'];
-    	function PageDirectiveController(menuItemService){
+        PageDirectiveController.$inject = ['menuItemService', 'authenticationService', '$location'];
+    	function PageDirectiveController(menuItemService, authenticationService, $location){
     		var vm = this;
     		vm.menuItems = menuItemService.getAll();
+            vm.session = authenticationService.session;
+            vm.logout = authenticationService.logout;
     	}
         return{
             templateUrl: 'app/modules/core/components/page/page.html',
