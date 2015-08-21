@@ -3,8 +3,8 @@
 
 	angular.module('app.project').service('ProjectPageDetailModel', ProjectPageDetailModel);
 
-	ProjectPageDetailModel.$inject = ['projectService', 'customerService'];
-	function ProjectPageDetailModel(projectService, customerService) {
+	ProjectPageDetailModel.$inject = ['projectService', 'customerService', 'locationBlockService'];
+	function ProjectPageDetailModel(projectService, customerService, locationBlockService) {
 		var self = this;
 		self.originalCopy = null;
 		self.workingCopy = null;
@@ -17,15 +17,22 @@
 		self.save =save;
 
 		function cancel(){
+			locationBlockService.allow();
 			reset();
 		}
 
 		function save(){
-			return projectService.update(self.workingCopy, self.workingCopy.id);
+			return projectService.update(self.workingCopy, self.workingCopy.id).then(cancel);
 		}
 
 		function workingCopyChanged(){
 			self.dirty = !angular.equals(self.workingCopy, self.originalCopy);
+			if(self.dirty){
+				locationBlockService.prevent();
+			}
+			else{
+				locationBlockService.allow();
+			}
 		}
 		function reset(){
 			self.workingCopy = null;

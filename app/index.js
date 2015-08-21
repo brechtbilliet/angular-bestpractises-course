@@ -16,7 +16,8 @@
 			failedToRemove: 'Failed to remove the data',
 			failedToLoad: 'Failed to load the data',
 			failedToLogin: 'Failed to login',
-			failedToRegister: 'Failed to register'
+			failedToRegister: 'Failed to register',
+			cannotLeavePage: 'Can not leave page, please save or cancel your changes first!'
 		},
 		restUrl: 'http://nflow-angular-course.azurewebsites.net/'
 	});
