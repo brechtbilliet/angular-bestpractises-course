@@ -7,8 +7,34 @@
 	function customerService($q, $timeout){
 		return {
 			getAll: getAll,
-			getById: getById
+			getById: getById,
+			add: add,
+			update: update,
+			remove: remove
 		};
+
+		function add(customer){
+			var deferred = $q.defer();
+			$timeout(function(){
+				deferred.resolve();
+			},1000);
+			return deferred.promise;
+		}
+		function update(customer, id){
+			var deferred = $q.defer();
+			$timeout(function(){
+				deferred.resolve();
+			},1000);
+			return deferred.promise;
+		}
+
+		function remove(id){
+			var deferred = $q.defer();
+			$timeout(function(){
+				deferred.resolve();
+			},1000);
+			return deferred.promise;
+		}
 
 		function getAll(){
 			var deferred = $q.defer();

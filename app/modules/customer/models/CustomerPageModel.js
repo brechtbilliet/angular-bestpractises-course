@@ -8,6 +8,11 @@
 		var self = this;
 		self.gridData = null;
 		self.loadData = loadData;
+		self.remove = remove;
+
+		function remove(item){
+			return customerService.remove(item.id).then(self.loadData);
+		}
 
 		function loadData(){
 			function onSuccess(response){

@@ -7,4 +7,13 @@
 		});
 	});
 	mod.constant('toastr', toastr);
+	mod.constant('CONFIG', {
+		toasts: {
+			successfullySaved: 'Successfully saved the data',
+			failedToSave: 'Failed to save the data',
+			successfullyRemoved: 'Successfully removed the data',
+			failedToRemove: 'Failed to remove the data',
+			failedToLoad: 'Failed to load the data'
+		}
+	});
 }(toastr));

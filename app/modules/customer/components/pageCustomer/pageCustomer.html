@@ -12,7 +12,10 @@
 		<tr ng-repeat="customer in pageVm.model.gridData">
 			<td>{{::customer.companyName}}</td>
 			<td>{{::customer.description}}</td>
-			<td><a href="#/customers/{{::customer.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Detail</a></td>
+			<td>
+				<a href="#/customers/{{::customer.id}}" class="btn btn-primary"><i class="fa fa-pencil"></i>&nbsp;Detail</a>
+				<button class="btn btn-danger" ng-click="pageVm.remove(customer)"><i class="fa fa-trash-o"></i>&nbsp;Remove</button>
+			</td>
 		</tr>
 		<tr ng-if="pageVm.model.gridData.length === 0">
 			<td colspan="3">No data found</td>
