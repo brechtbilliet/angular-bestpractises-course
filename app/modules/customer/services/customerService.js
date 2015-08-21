@@ -14,11 +14,25 @@
 		};
 
 		function add(customer){
+			return $http({
+				method: 'POST',
+				url: CONFIG.restUrl + 'customers',
+				data: customer
+			});
 		}
 		function update(customer, id){
+			return $http({
+				method: 'PUT',
+				url: CONFIG.restUrl + 'customers/' + id,
+				data: customer
+			});
 		}
 
 		function remove(id){
+			return $http({
+				method: 'REMOVE',
+				url: CONFIG.restUrl + 'customers/' + id
+			});
 		}
 
 		function getAll(){
@@ -28,10 +42,11 @@
 			});
 		}
 
-		function getDummyUsers(){
-		}
-
-		function getById(){
+		function getById(id){
+			return $http({
+				method: 'GET',
+				url: CONFIG.restUrl + 'customers/' + id
+			});
 		}
 	}
 }());
