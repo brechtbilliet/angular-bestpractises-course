@@ -6,11 +6,7 @@
 	function bootstrap(authenticationService){
 		authenticationService.init();
 	}
-	angular.element(document).ready(function() {
-		angular.bootstrap(document, ['app'], {
-			strictDi: true
-		});
-	});
+	
 	mod.constant('toastr', toastr);
 	mod.constant('CONFIG', {
 		toasts: {
@@ -23,5 +19,29 @@
 			failedToRegister: 'Failed to register'
 		},
 		restUrl: 'http://nflow-angular-course.azurewebsites.net/'
+	});
+	mod.config(httpConfig);
+
+	httpConfig.$inject = ['$httpProvider'];
+	function httpConfig($httpProvider){
+		$httpProvider.interceptors.push(requestInterceptor);
+	}
+
+	requestInterceptor.$inject = ['$window'];
+
+	function requestInterceptor($window){
+		return{
+			request: function(config){
+				if ($window.localStorage.authenticationData) {
+					config.headers.Authorization = 'Bearer ' + JSON.parse($window.localStorage.authenticationData).token;
+				}
+				return config;
+			}
+		};
+	}
+	angular.element(document).ready(function() {
+		angular.bootstrap(document, ['app'], {
+			strictDi: true
+		});
 	});
 }(toastr));
