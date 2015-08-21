@@ -23,7 +23,8 @@
 			'bower_components/lodash/lodash.js',
 		],
 		cssDependencies = [
-			'bower_components/bootstrap/dist/css/bootstrap.css'
+			'bower_components/bootstrap/dist/css/bootstrap.css',
+			'bower_components/fontawesome/css/font-awesome.css'
 		];
 
 	gulp.task('html', function() {

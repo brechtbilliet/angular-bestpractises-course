@@ -12,7 +12,7 @@
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li ng-repeat="menuItem in pageVm.menuItems">
-					<a href="#{{menuItem.url}}">{{menuItem.label}}</a>
+					<a href="#{{::menuItem.url}}">{{::menuItem.label}}</a>
 				</li>
 			</ul>
 		</div>
