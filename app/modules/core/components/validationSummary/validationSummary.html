@@ -1,0 +1,6 @@
+<div ng-if="validationSummaryVm.validationErrors !== null" class="alert alert-danger">
+	<ul>
+		<li ng-repeat="(key, value) in validationSummaryVm.validationErrors">{{key}}: {{value[0]}}</li>
+	</ul>
+
+</div>

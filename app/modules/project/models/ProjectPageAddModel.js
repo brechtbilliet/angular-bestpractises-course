@@ -12,6 +12,7 @@
 			description: '',
 			customer: null
 		};
+		self.validationErrors = null;
 		self.reset = reset;
 		self.cancel = cancel;
 		self.save = save;
@@ -21,10 +22,18 @@
 		}
 
 		function save() {
-			return projectService.add(self.workingCopy);
+			function failed(resp){
+				if(resp.status === 400){
+					self.validationErrors = resp.data.modelState;
+				}
+			}
+			var promise = projectService.add(self.workingCopy);
+			promise.then(angular.noop, failed);
+			return promise;
 		}
 
 		function reset() {
+			self.validationErrors = null;
 			self.workingCopy = {
 				name: '',
 				description: '',

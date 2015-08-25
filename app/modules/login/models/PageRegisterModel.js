@@ -16,6 +16,7 @@
 			firstName: '',
 			lastName: ''
 		};
+		self.validationErrors = null;
 
 
 		function reset() {
@@ -25,13 +26,21 @@
 			self.workingCopy.firstName = '';
 			self.workingCopy.lastName = '';
 			self.workingCopy.register = register;
+			self.validationErrors = null;
 		}
 
 		function register() {
 			function onSuccess(response) {
 				authenticationService.setSession(response.data);
 			}
-			return authenticationService.register(self.workingCopy).then(onSuccess);
+			function onFail(response){
+				if(response.status === 400){
+					self.validationErrors = response.data.modelState;
+				}
+			}
+			var promise = authenticationService.register(self.workingCopy);
+			promise.then(onSuccess, onFail);
+			return promise;
 		}
 	}
 }());

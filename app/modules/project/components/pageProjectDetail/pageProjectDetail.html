@@ -1,4 +1,5 @@
 <h1><i class="fa fa-user"></i>&nbsp;Project:  {{::pageVm.model.originalCopy.name}}</h1>
+<validation-summary validation-errors="pageVm.model.validationErrors"></validation-summary>
 <form class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-4 control-label">Project name</label>
@@ -18,7 +19,7 @@
       <select class="form-control" ng-options="c.id as c.name for c in pageVm.model.customers" ng-change="pageVm.workingCopyChanged()" ng-model="pageVm.model.workingCopy.customerId"></select>
     </div>
   </div>
-  
+
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">
       <button type="submit" class="btn btn-default" ng-click="pageVm.cancel()" ng-disabled="!pageVm.model.workingCopy"><i class="fa fa-undo"></i>&nbsp;Cancel</button>

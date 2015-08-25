@@ -15,6 +15,7 @@
 		self.workingCopyChanged = workingCopyChanged;
 		self.cancel = cancel;
 		self.save =save;
+		self.validationErrors = null;
 
 		function cancel(){
 			locationBlockService.allow();
@@ -22,7 +23,14 @@
 		}
 
 		function save(){
-			return projectService.update(self.workingCopy, self.workingCopy.id).then(cancel);
+			function failed(resp){
+				if(resp.status === 400){
+					self.validationErrors = resp.data.modelState;
+				}
+			}
+			var promise = projectService.update(self.workingCopy, self.workingCopy.id);
+			promise.then(angular.noop, failed);
+			return promise;
 		}
 
 		function workingCopyChanged(){
@@ -35,6 +43,7 @@
 			}
 		}
 		function reset(){
+			self.validationErrors = null;
 			self.workingCopy = null;
 			self.originalCopy = null;
 			self.dirty = false;
@@ -51,6 +60,6 @@
 			}
 			return projectService.getById(id).then(onSuccess);
 		}
-		
+
 	}
 }());

@@ -9,6 +9,7 @@
 		self.originalCopy = null;
 		self.workingCopy = null;
 		self.dirty = false;
+		self.validationErrors = null;
 
 		self.loadData = loadData;
 		self.reset = reset;
@@ -22,7 +23,14 @@
 		}
 
 		function save(){
-			return customerService.update(self.workingCopy, self.workingCopy.id).then(cancel);
+			function failed(resp){
+				if(resp.status === 400){
+					self.validationErrors = resp.data.modelState;
+				}
+			}
+			var promise = customerService.update(self.workingCopy, self.workingCopy.id);
+			promise.then(cancel, failed);
+			return promise;
 		}
 
 		function workingCopyChanged(){
@@ -38,6 +46,7 @@
 			self.workingCopy = null;
 			self.originalCopy = null;
 			self.dirty = false;
+			self.validationErrors = null;
 		}
 		function loadData(id){
 			reset();
@@ -47,6 +56,5 @@
 			}
 			return customerService.getById(id).then(onSuccess);
 		}
-		
 	}
 }());

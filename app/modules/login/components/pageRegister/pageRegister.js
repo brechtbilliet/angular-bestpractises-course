@@ -14,7 +14,7 @@
 				function onSuccess(){
 					$location.path('/');
 				}
-				function onFail(){
+				function onFail(response){
 					toastr.error(CONFIG.toasts.failedToRegister);
 				}
 				vm.model.register().then(onSuccess, onFail);
