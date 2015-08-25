@@ -1,10 +1,10 @@
 (function(){
 	'use strict';
-	
+
 	angular.module('app.project').factory('projectService', projectService);
 
-	projectService.$inject = ['$http', 'CONFIG'];
-	function projectService($http, CONFIG){
+	projectService.$inject = ['$http', 'CONFIG', 'busyService'];
+	function projectService($http, CONFIG, busyService){
 		return {
 			getAll: getAll,
 			getById: getById,
@@ -14,39 +14,39 @@
 		};
 
 		function add(project){
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'POST',
 				url: CONFIG.restUrl + 'projects',
 				data: project
-			});
+			}));
 		}
 		function update(project, id){
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'PUT',
 				url: CONFIG.restUrl + 'projects/' + id,
 				data: project
-			});
+			}));
 		}
 
 		function remove(id){
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'DELETE',
 				url: CONFIG.restUrl + 'projects/' + id
-			});
+			}));
 		}
 
 		function getAll(){
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'GET',
 				url: CONFIG.restUrl + 'projects'
-			});
+			}));
 		}
 
 		function getById(id){
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'GET',
 				url: CONFIG.restUrl + 'projects/' + id
-			});
+			}));
 		}
 	}
 }());

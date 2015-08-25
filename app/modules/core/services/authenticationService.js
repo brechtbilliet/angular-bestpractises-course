@@ -3,9 +3,9 @@
 
 	angular.module('app.core').factory('authenticationService', authenticationService);
 
-	authenticationService.$inject = ['$location', '$rootScope', '$http', 'CONFIG', '$window'];
+	authenticationService.$inject = ['$location', '$rootScope', '$http', 'CONFIG', '$window', 'busyService'];
 
-	function authenticationService($location, $rootScope, $http, CONFIG, $window) {
+	function authenticationService($location, $rootScope, $http, CONFIG, $window, busyService) {
 		var session = {
 			isAuthenticated: false,
 			token: null,
@@ -31,19 +31,19 @@
 		}
 
 		function register(data) {
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'POST',
 				url: CONFIG.restUrl + 'authentication/register',
 				data: data
-			});
+			}));
 		}
 
 		function login(data) {
-			return $http({
+			return busyService.handlePromise($http({
 				method: 'POST',
 				url: CONFIG.restUrl + 'authentication/login',
 				data: data
-			});
+			}));
 		}
 
 		function setSession(data) {
