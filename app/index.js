@@ -1,13 +1,9 @@
 (function() {
 	'use strict';
-	var mod = angular.module('app', ['app.about', 'app.core', 'app.customer', 'app.home', 'app.login', 'app.project']).run(bootstrap);
+	var mod = angular.module('app', ['app.about', 'app.core', 'app.customer', 'app.home', 'app.login', 'app.project']);
 
-	bootstrap.$inject = ['authenticationService'];
-	function bootstrap(authenticationService){
-		authenticationService.init();
-	}
-	
 	mod.constant('toastr', toastr);
+	mod.constant('$', $);
 	mod.constant('CONFIG', {
 		toasts: {
 			successfullySaved: 'Successfully saved the data',
@@ -21,18 +17,28 @@
 		},
 		restUrl: 'http://nflow-angular-course.azurewebsites.net/'
 	});
-	mod.config(httpConfig);
 
+
+	requestInterceptor.$inject = ['$window'];
+	bootstrap.$inject = ['authenticationService'];
+	// exceptionConfig.$inject = ['$provide'];
 	httpConfig.$inject = ['$httpProvider'];
-	function httpConfig($httpProvider){
+
+	mod.config(httpConfig);
+	// mod.config(exceptionConfig);
+	mod.run(bootstrap);
+
+	function bootstrap(authenticationService) {
+		authenticationService.init();
+	}
+
+	function httpConfig($httpProvider) {
 		$httpProvider.interceptors.push(requestInterceptor);
 	}
 
-	requestInterceptor.$inject = ['$window'];
-
-	function requestInterceptor($window){
-		return{
-			request: function(config){
+	function requestInterceptor($window) {
+		return {
+			request: function(config) {
 				if ($window.localStorage.authenticationData) {
 					config.headers.Authorization = 'Bearer ' + JSON.parse($window.localStorage.authenticationData).token;
 				}
@@ -40,6 +46,16 @@
 			}
 		};
 	}
+
+	// function exceptionConfig($provide) {
+	// 	$provide.decorator("$exceptionHandler", ['$delegate', '$injector', function($delegate, $injector) {
+	// 		return function(exception, cause) {
+	// 			console.log(exception);
+	// 			$delegate(exception, cause);
+	// 		};
+	// 	}]);
+	// }
+
 	angular.element(document).ready(function() {
 		angular.bootstrap(document, ['app'], {
 			strictDi: true
