@@ -7,7 +7,7 @@
 		connect = require('gulp-connect'),
 		gOpen = require('gulp-open'),
 		del = require('del'),
-		Q = require('Q'),
+		Q = require('q'),
 		cssMinify = require('gulp-minify-css'),
 		uglify = require('gulp-uglify'),
 		util = require('gulp-util'),
