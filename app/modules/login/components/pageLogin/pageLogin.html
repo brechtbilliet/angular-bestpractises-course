@@ -1,0 +1,22 @@
+<h1>Login</h1>
+<validation-summary validation-errors="pageVm.model.validationErrors"></validation-summary>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Email</label>
+    <div class="col-sm-8">
+      <input type="email" validation-border="pageVm.model.validationErrors" name="model.emailAddress" class="form-control" ng-model="pageVm.model.emailAddress">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Password</label>
+    <div class="col-sm-8">
+      <input type="password" validation-border="pageVm.model.validationErrors" name="model.password" class="form-control" ng-model="pageVm.model.password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+      <button type="submit" class="btn btn-default" ng-click="pageVm.login()">Sign in</button>&nbsp;
+      <a href="#/register">Not registered yet?</a>
+    </div>
+  </div>
+</form>

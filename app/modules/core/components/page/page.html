@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" ng-if="pageVm.session.isAuthenticated">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#/">Best practises</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li ng-repeat="menuItem in pageVm.menuItems">
+					<a href="#{{::menuItem.url}}">{{::menuItem.label}}</a>
+				</li>
+			</ul>
+			<div class="navbar-form navbar-left">
+				<button class="navbar-button btn btn-warning" ng-click="pageVm.logout()">logout</button>
+			</div>
+			<div class="navbar-text">
+				Welcome {{pageVm.session.firstName}} {{pageVm.session.lastName}}
+			</div>
+		</div>
+	</div>
+</nav>
+<spinner spin="pageVm.busyModel.isBusy"></spinner>
+<div ng-view class="container">
+</div>
